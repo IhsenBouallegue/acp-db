@@ -1,17 +1,16 @@
+import { CommentSection } from "@/app/idea-exchange/comment-section";
+import { PostActions } from "@/app/idea-exchange/post-actions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import type { Post } from "../../components/social/types";
-import { CommentSection } from "./comment-section";
-import { PostActions } from "./post-action";
+import type { Post } from "@/types/social.types";
 
 interface PostCardProps {
   post: Post;
   onLike: (postId: number) => void;
-  onComment: (postId: number, content: string) => void;
   onBookmark: (postId: number) => void;
 }
 
-export function PostCard({ post, onLike, onComment, onBookmark }: PostCardProps) {
+export function PostCard({ post }: PostCardProps) {
   return (
     <Card className="mb-4">
       <CardHeader className="flex flex-row items-center gap-4">
@@ -39,8 +38,8 @@ export function PostCard({ post, onLike, onComment, onBookmark }: PostCardProps)
       </CardContent>
 
       <CardFooter className="flex flex-col gap-4">
-        <PostActions post={post} onLike={onLike} onBookmark={onBookmark} />
-        <CommentSection post={post} onComment={onComment} />
+        <PostActions post={post} />
+        <CommentSection post={post} />
       </CardFooter>
     </Card>
   );

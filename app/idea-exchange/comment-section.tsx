@@ -1,20 +1,21 @@
+"use client";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useSocialStore } from "@/store/social-store";
+import type { Post } from "@/types/social.types";
 import { Paperclip, Send, Smile } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { useSocialStore } from "../../components/social/store";
-import type { Post } from "../../components/social/types";
 
 interface CommentSectionProps {
   post: Post;
-  onComment: (postId: number, content: string) => void;
 }
 
-export function CommentSection({ post, onComment }: CommentSectionProps) {
+export function CommentSection({ post }: CommentSectionProps) {
   const [commentInput, setCommentInput] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const { currentUser } = useSocialStore();
+  const { currentUser, addComment } = useSocialStore();
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
@@ -27,7 +28,7 @@ export function CommentSection({ post, onComment }: CommentSectionProps) {
   const handleSubmitComment = (e: React.FormEvent) => {
     e.preventDefault();
     if (commentInput.trim()) {
-      onComment(post.id, commentInput);
+      addComment(post.id, commentInput);
       setCommentInput("");
     }
   };
