@@ -1,20 +1,16 @@
 "use client";
 
+import { CreatePost } from "@/app/idea-exchange/create-post";
+import { PostCard } from "@/app/idea-exchange/post-card";
+import { SearchAndFilter } from "@/app/idea-exchange/search-and-filter";
+import { fetchPosts } from "@/components/social/api";
 import { useSocialMutations } from "@/components/social/hooks/useSocialMutations";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { useSocialStore } from "@/components/social/store";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { toast } from "sonner";
-import { CreatePost } from "./CreatePost";
-import { PostCard } from "./PostCard";
-import { SearchAndFilter } from "./SearchAndFilter";
-import { fetchPosts } from "./api";
-import { useSocialStore } from "./store";
-import type { Post } from "./types";
+import { useCallback, useRef, useState } from "react";
 
-export function SocialMediaTimeline() {
+export default function SocialMediaTimeline() {
   const queryClient = useQueryClient();
   const [newPost, setNewPost] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -64,9 +60,9 @@ export function SocialMediaTimeline() {
   if (isError) return <div>Error loading posts</div>;
 
   return (
-    <Card className="w-full max-w-3xl mx-auto">
-      <CardHeader className="text-2xl font-bold">Social Media Timeline</CardHeader>
-      <CardContent className="space-y-4">
+    <>
+      <h1 className="text-3xl font-bold mb-6">Idea Exchange Platform</h1>
+      <div className="flex pt-6 flex-col gap-4 max-w-3xl mx-auto">
         <CreatePost value={newPost} onChange={setNewPost} onSubmit={handleCreatePost} />
         <SearchAndFilter
           searchTerm={searchTerm}
@@ -74,18 +70,10 @@ export function SocialMediaTimeline() {
           sortBy={sortBy}
           onSortChange={setSortBy}
         />
-        <ScrollArea className="h-[600px] relative" onScroll={handleScroll} ref={scrollAreaRef}>
-          {filteredAndSortedPosts?.map((post) => (
-            <PostCard
-              key={post.id}
-              post={post}
-              onLike={handleLike}
-              onComment={handleComment}
-              onBookmark={bookmarkPost}
-            />
-          ))}
-        </ScrollArea>
-      </CardContent>
-    </Card>
+        {filteredAndSortedPosts?.map((post) => (
+          <PostCard key={post.id} post={post} onLike={handleLike} onComment={handleComment} onBookmark={bookmarkPost} />
+        ))}
+      </div>
+    </>
   );
 }

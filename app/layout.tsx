@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Providers from "@/app/providers";
+import { AppSidebar } from "@/components/app-sidebar";
 import { Toaster } from "sonner";
 
 const geistSans = localFont({
@@ -29,7 +30,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>
-          <main>{children}</main>
+          <AppSidebar />
+          <main className="flex-1 p-8">{children}</main>
         </Providers>
         <Toaster />
       </body>

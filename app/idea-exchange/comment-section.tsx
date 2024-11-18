@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Paperclip, Send, Smile } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { useSocialStore } from "./store";
-import type { Post } from "./types";
+import { useSocialStore } from "../../components/social/store";
+import type { Post } from "../../components/social/types";
 
 interface CommentSectionProps {
   post: Post;
@@ -16,6 +16,7 @@ export function CommentSection({ post, onComment }: CommentSectionProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { currentUser } = useSocialStore();
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";

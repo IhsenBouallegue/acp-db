@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Bookmark, Heart, MessageCircle, Share2 } from "lucide-react";
-import type { Post } from "./types";
+import type { Post } from "../../components/social/types";
 
 interface PostActionsProps {
   post: Post;

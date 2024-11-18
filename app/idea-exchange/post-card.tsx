@@ -1,8 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { CommentSection } from "./CommentSection";
-import { PostActions } from "./PostActions";
-import type { Post } from "./types";
+import type { Post } from "../../components/social/types";
+import { CommentSection } from "./comment-section";
+import { PostActions } from "./post-action";
 
 interface PostCardProps {
   post: Post;
