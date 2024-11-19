@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { machines, manufacturingSites, products } from "@/data/master-data";
 import {
   type ColumnDef,
   type ColumnFiltersState,
@@ -17,52 +18,7 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 
-// Mock data
-const productData = [
-  {
-    id: 1,
-    width: "10",
-    thickness: "2",
-    elongation: "5",
-    symmetry: "Yes",
-    designNumber: "P001",
-    manufacturingSite: "USA",
-  },
-  {
-    id: 2,
-    width: "15",
-    thickness: "3",
-    elongation: "7",
-    symmetry: "No",
-    designNumber: "P002",
-    manufacturingSite: "Germany",
-  },
-];
-
-const toolData = [
-  {
-    id: 1,
-    web: "5",
-    notch: "2",
-    louverWidth: "3",
-    designNumber: "T001",
-    toolSetNumber: "TS001",
-    manufacturingSite: "China",
-  },
-  {
-    id: 2,
-    web: "7",
-    notch: "3",
-    louverWidth: "4",
-    designNumber: "T002",
-    toolSetNumber: "TS002",
-    manufacturingSite: "Mexico",
-  },
-];
-
-const manufacturingSites = ["Brazil", "Canada", "China", "France", "Germany", "Mexico", "USA"];
-
-export function MasterDataTable({ type }: { type: "products" | "tools" }) {
+export function MasterDataTable({ type }: { type: "products" | "machines" }) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -82,11 +38,11 @@ export function MasterDataTable({ type }: { type: "products" | "tools" }) {
           { accessorKey: "notch", header: "Notch" },
           { accessorKey: "louverWidth", header: "Louver Width" },
           { accessorKey: "designNumber", header: "Design Number" },
-          { accessorKey: "toolSetNumber", header: "Tool Set Number" },
+          { accessorKey: "machineSetNumber", header: "Machine Set Number" },
           { accessorKey: "manufacturingSite", header: "Manufacturing Site" },
         ];
 
-  const data = type === "products" ? productData : toolData;
+  const data = type === "products" ? products : machines;
 
   const table = useReactTable({
     data,

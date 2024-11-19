@@ -1,5 +1,7 @@
 import { MasterDataTabs } from "@/components/master-data/master-data-tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PageContainer } from "@/components/ui/page-container";
+import { PageHeading } from "@/components/ui/page-heading";
 import { Cog, Package, TrendingUp, Users } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -9,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function MasterDataPage() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-6">Master Data Management</h1>
+    <PageContainer>
+      <PageHeading className="text-3xl font-bold mb-6">Master Data Management</PageHeading>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
         <Card>
@@ -54,8 +56,7 @@ export default function MasterDataPage() {
           </CardContent>
         </Card>
       </div>
-
       <MasterDataTabs />
-    </div>
+    </PageContainer>
   );
 }

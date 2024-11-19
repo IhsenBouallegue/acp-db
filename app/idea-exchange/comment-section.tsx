@@ -4,12 +4,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useSocialStore } from "@/store/social-store";
-import type { Post } from "@/types/social.types";
+import type { PostWithRelations } from "@/types/social.types";
 import { Paperclip, Send, Smile } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 interface CommentSectionProps {
-  post: Post;
+  post: PostWithRelations;
 }
 
 export function CommentSection({ post }: CommentSectionProps) {

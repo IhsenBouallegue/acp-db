@@ -1,4 +1,12 @@
-export type SearchCategory = "all" | "users" | "products" | "machines" | "posts";
+export type SearchCategory =
+  | "all"
+  | "users"
+  | "products"
+  | "machines"
+  | "posts"
+  | "knowledge-base"
+  | "idea-exchange"
+  | "manufacturing";
 
 export interface SearchResult {
   id: string;

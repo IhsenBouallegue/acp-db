@@ -3,21 +3,21 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlusCircle } from "lucide-react";
 
-export function ToolsTab() {
+export function MachinesTab() {
   return (
     <Card>
       <CardHeader>
         <div className="flex justify-between items-center">
-          <CardTitle>Tools</CardTitle>
+          <CardTitle>Machines</CardTitle>
           <Button>
             <PlusCircle className="mr-2 h-4 w-4" />
-            Add Tool
+            Add Machine
           </Button>
         </div>
-        <CardDescription>A list of all tools.</CardDescription>
+        <CardDescription>A list of all machines.</CardDescription>
       </CardHeader>
       <CardContent>
-        <MasterDataTable type="tools" />
+        <MasterDataTable type="machines" />
       </CardContent>
     </Card>
   );

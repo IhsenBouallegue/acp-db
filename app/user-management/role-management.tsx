@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -148,48 +148,58 @@ export function RoleManagement() {
             </DialogContent>
           </Dialog>
         </div>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Role Name</TableHead>
-              <TableHead>View Users</TableHead>
-              <TableHead>Edit Users</TableHead>
-              <TableHead>Delete Users</TableHead>
-              <TableHead>Invite Users</TableHead>
-              <TableHead>Manage Roles</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {accessLevels.map((level) => (
-              <TableRow key={level.id}>
-                <TableCell>{level.name}</TableCell>
-                <TableCell>{level.canViewUsers ? "✓" : "✗"}</TableCell>
-                <TableCell>{level.canEditUsers ? "✓" : "✗"}</TableCell>
-                <TableCell>{level.canDeleteUsers ? "✓" : "✗"}</TableCell>
-                <TableCell>{level.canInviteUsers ? "✓" : "✗"}</TableCell>
-                <TableCell>{level.canManageRoles ? "✓" : "✗"}</TableCell>
-                <TableCell>
-                  <div className="flex space-x-2">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => {
-                        setCurrentAccessLevel(level);
-                        setIsEditDialogOpen(true);
-                      }}
-                    >
-                      <Pencil className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon" onClick={() => handleDeleteAccessLevel(level.id)}>
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </TableCell>
+        <div className="rounded-md border">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Role Name</TableHead>
+                <TableHead>View Users</TableHead>
+                <TableHead>Edit Users</TableHead>
+                <TableHead>Delete Users</TableHead>
+                <TableHead>Invite Users</TableHead>
+                <TableHead>Manage Roles</TableHead>
+                <TableHead>Actions</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {accessLevels.map((level) => (
+                <TableRow key={level.id}>
+                  <TableCell>{level.name}</TableCell>
+                  <TableCell>{level.canViewUsers ? "✓" : "✗"}</TableCell>
+                  <TableCell>{level.canEditUsers ? "✓" : "✗"}</TableCell>
+                  <TableCell>{level.canDeleteUsers ? "✓" : "✗"}</TableCell>
+                  <TableCell>{level.canInviteUsers ? "✓" : "✗"}</TableCell>
+                  <TableCell>{level.canManageRoles ? "✓" : "✗"}</TableCell>
+                  <TableCell>
+                    <div className="flex space-x-2">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => {
+                          setCurrentAccessLevel(level);
+                          setIsEditDialogOpen(true);
+                        }}
+                      >
+                        <Pencil className="h-4 w-4" />
+                      </Button>
+                      <Button variant="ghost" size="icon" onClick={() => handleDeleteAccessLevel(level.id)}>
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+        <div className="flex items-center justify-end space-x-2 py-4">
+          <Button variant="outline" size="sm">
+            Previous
+          </Button>
+          <Button variant="outline" size="sm">
+            Next
+          </Button>
+        </div>
         <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
           <DialogContent>
             <DialogHeader>

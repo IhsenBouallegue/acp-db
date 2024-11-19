@@ -2,11 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { useSocialStore } from "@/store/social-store";
+import type { PostWithRelations } from "@/types/social.types";
 import { Bookmark, Heart, MessageCircle, Share2 } from "lucide-react";
-import type { Post } from "../../types/social.types";
 
 interface PostActionsProps {
-  post: Post;
+  post: PostWithRelations;
 }
 
 export function PostActions({ post }: PostActionsProps) {

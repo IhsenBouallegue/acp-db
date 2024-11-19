@@ -16,7 +16,7 @@ const backgroundEffect = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden">
+    <div className="h-full flex items-start justify-center bg-background relative overflow-hidden">
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -38,7 +38,7 @@ export default function NotFound() {
         }}
         aria-hidden="true"
       />
-      <Card className="w-full max-w-md shadow-lg relative z-20 bg-card/95 backdrop-blur-sm">
+      <Card className="w-full max-w-md shadow-lg relative z-20 bg-card/95 backdrop-blur-sm mt-[10vh]">
         <CardHeader>
           <CardTitle className="text-4xl font-bold text-center text-primary">404</CardTitle>
         </CardHeader>

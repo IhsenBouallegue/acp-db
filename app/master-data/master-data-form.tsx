@@ -6,54 +6,52 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { machines, manufacturingSites } from "@/data/master-data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
-
-const manufacturingSites = ["Brazil", "Canada", "China", "France", "Germany", "Mexico", "USA"];
-
-// Mock tool data
-const toolOptions = [
-  { id: 1, name: "Tool A", designNumber: "T001" },
-  { id: 2, name: "Tool B", designNumber: "T002" },
-  { id: 3, name: "Tool C", designNumber: "T003" },
-];
+import { z } from "zod";
 
 const productSchema = z.object({
-  width: z.string(),
-  thickness: z.string(),
-  elongation: z.string(),
+  width: z.number(),
+  thickness: z.number(),
+  elongation: z.number(),
   symmetry: z.string(),
   preMaterialQuality: z.string(),
-  preMaterialThickness: z.string(),
-  preMaterialWidth: z.string(),
+  preMaterialThickness: z.number(),
+  preMaterialWidth: z.number(),
   coating: z.string(),
-  materialWeight: z.string(),
-  elongationPercentage: z.string(),
-  tearStrength: z.string(),
+  materialWeight: z.number(),
+  elongationPercentage: z.number(),
+  tearStrength: z.number(),
   applicationInfo: z.string(),
   designNumber: z.string(),
   manufacturingSite: z.string(),
-  linkedTools: z.array(z.number()).optional(),
+  linkedMachines: z.array(z.number()).optional(),
 });
 
-const toolSchema = z.object({
-  web: z.string(),
-  notch: z.string(),
-  louverWidth: z.string(),
+const machineSchema = z.object({
+  web: z.number(),
+  notch: z.number(),
+  louverWidth: z.number(),
   designNumber: z.string(),
-  toolWidth: z.string(),
-  toolSetNumber: z.string(),
+  machineWidth: z.number(),
+  machineSetNumber: z.string(),
   manufacturingSite: z.string(),
 });
 
-type FormSchema = z.infer<typeof productSchema> | z.infer<typeof toolSchema>;
+type FormSchema = z.infer<typeof productSchema> | z.infer<typeof machineSchema>;
+
+const machineOptions = machines.map((machine) => ({
+  id: machine.id,
+  name: `Machine ${machine.designNumber}`,
+  designNumber: machine.designNumber,
+}));
 
 export function MasterDataForm({
   type,
   onSubmit,
-}: { type: "products" | "tools"; onSubmit: (data: FormSchema) => void }) {
-  const schema = type === "products" ? productSchema : toolSchema;
+}: { type: "products" | "machines"; onSubmit: (data: FormSchema) => void }) {
+  const schema = type === "products" ? productSchema : machineSchema;
   const form = useForm<FormSchema>({
     resolver: zodResolver(schema),
   });
@@ -81,8 +79,8 @@ export function MasterDataForm({
           { name: "notch", label: "Notch", type: "number" },
           { name: "louverWidth", label: "Louver Width", type: "number" },
           { name: "designNumber", label: "Design Number", type: "text" },
-          { name: "toolWidth", label: "Tool Width", type: "number" },
-          { name: "toolSetNumber", label: "Tool Set Number", type: "text" },
+          { name: "machineWidth", label: "Machine Width", type: "number" },
+          { name: "machineSetNumber", label: "Machine Set Number", type: "text" },
           { name: "manufacturingSite", label: "Manufacturing Site", type: "select" },
         ];
 
@@ -128,32 +126,32 @@ export function MasterDataForm({
         {type === "products" && (
           <FormField
             control={form.control}
-            name="linkedTools"
+            name="linkedMachines"
             render={() => (
               <FormItem>
                 <div className="mb-4">
-                  <FormLabel className="text-base">Linked Tools</FormLabel>
+                  <FormLabel className="text-base">Linked Machines</FormLabel>
                 </div>
-                {toolOptions.map((tool) => (
+                {machineOptions.map((machine) => (
                   <FormField
-                    key={tool.id}
+                    key={machine.id}
                     control={form.control}
-                    name="linkedTools"
+                    name="linkedMachines"
                     render={({ field }) => {
                       return (
-                        <FormItem key={tool.id} className="flex flex-row items-start space-x-3 space-y-0">
+                        <FormItem key={machine.id} className="flex flex-row items-start space-x-3 space-y-0">
                           <FormControl>
                             <Checkbox
-                              checked={field.value?.includes(tool.id)}
+                              checked={field.value?.includes(machine.id)}
                               onCheckedChange={(checked) => {
                                 return checked
-                                  ? field.onChange([...(field.value || []), tool.id])
-                                  : field.onChange(field.value?.filter((value) => value !== tool.id));
+                                  ? field.onChange([...(field.value || []), machine.id])
+                                  : field.onChange(field.value?.filter((value) => value !== machine.id));
                               }}
                             />
                           </FormControl>
                           <FormLabel className="font-normal">
-                            {tool.name} ({tool.designNumber})
+                            {machine.name} ({machine.designNumber})
                           </FormLabel>
                         </FormItem>
                       );

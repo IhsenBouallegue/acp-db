@@ -6,13 +6,14 @@ import { MasterDataOverview } from "@/app/(overview)/overview-master";
 import { QuickActions } from "@/app/(overview)/overview-quick-actions";
 import { RecentActivity } from "@/app/(overview)/overview-recent-activity";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { PageHeading } from "@/components/ui/page-heading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Suspense } from "react";
 
 export function DashboardPage() {
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+      <PageHeading>Dashboard</PageHeading>
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>

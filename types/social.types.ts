@@ -1,3 +1,5 @@
+import type { User } from "@/types/user.types";
+
 export type Attachment = {
   id: number;
   type: "image" | "video" | "document";
@@ -6,24 +8,32 @@ export type Attachment = {
 
 export type Comment = {
   id: number;
-  author: User;
+  postId: number;
+  authorId: number;
   content: string;
   timestamp: string;
 };
 
-export type User = {
+export type Post = {
   id: number;
-  name: string;
-  avatar: string;
+  authorId: number;
+  content: string;
+  timestamp: string;
+  likes: number;
+  commentIds: number[];
+  attachments: Attachment[];
+  mentionIds: number[];
+  bookmarked: boolean;
+  liked: boolean;
 };
 
-export type Post = {
+export type PostWithRelations = {
   id: number;
   author: User;
   content: string;
   timestamp: string;
   likes: number;
-  comments: Comment[];
+  comments: (Comment & { author: User })[];
   attachments: Attachment[];
   mentions: User[];
   bookmarked: boolean;
@@ -33,8 +43,8 @@ export type Post = {
 export type Notification = {
   id: number;
   type: "like" | "comment" | "mention";
-  user: User;
-  post: Post;
+  userId: number;
+  postId: number;
   timestamp: string;
   read: boolean;
 };

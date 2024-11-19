@@ -1,11 +1,11 @@
+import Providers from "@/app/providers";
+import { TopBar } from "@/components/app-topbar";
+import { SidebarInset } from "@/components/ui/sidebar";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
-import Providers from "@/app/providers";
-import { AppSidebar } from "@/components/app-sidebar";
-import { TopBar } from "@/components/app-topbar";
 import { Toaster } from "sonner";
-
+import "./globals.css";
+import { AppSidebar } from "@/components/app-sidebar";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -18,7 +18,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Overview",
+  title: "ACP DB Dashboard",
   description: "ACP DB",
 };
 
@@ -32,12 +32,14 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>
           <AppSidebar />
-          <div className="flex flex-col flex-1">
-            <TopBar />
-            <main className="flex-1 p-8">{children}</main>
-          </div>
+          <SidebarInset>
+            <header className="flex h-16 shrink-0 items-center gap-2">
+              <TopBar />
+            </header>
+            <main className="flex-1 h-[calc(100vh-4rem)]">{children}</main>
+            <Toaster />
+          </SidebarInset>
         </Providers>
-        <Toaster />
       </body>
     </html>
   );

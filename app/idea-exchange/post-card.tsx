@@ -2,12 +2,10 @@ import { CommentSection } from "@/app/idea-exchange/comment-section";
 import { PostActions } from "@/app/idea-exchange/post-actions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import type { Post } from "@/types/social.types";
+import type { PostWithRelations } from "@/types/social.types";
 
 interface PostCardProps {
-  post: Post;
-  onLike: (postId: number) => void;
-  onBookmark: (postId: number) => void;
+  post: PostWithRelations;
 }
 
 export function PostCard({ post }: PostCardProps) {
@@ -20,7 +18,9 @@ export function PostCard({ post }: PostCardProps) {
         </Avatar>
         <div className="flex flex-col">
           <p className="font-semibold">{post.author.name}</p>
-          <p className="text-sm text-gray-500">{new Date(post.timestamp).toLocaleString()}</p>
+          <p className="text-sm text-gray-500" suppressHydrationWarning>
+            {new Date(post.timestamp).toLocaleString()}
+          </p>
         </div>
       </CardHeader>
 
