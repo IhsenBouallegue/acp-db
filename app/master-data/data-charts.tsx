@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ProductToolBarChart } from "./product-tool-bar-chart"
-import { ProductTypePieChart } from "./product-type-pie-chart"
+import { ProductToolBarChart } from "@/app/master-data/product-tool-bar-chart";
+import { ProductTypePieChart } from "@/app/master-data/product-type-pie-chart";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function DataCharts() {
   return (
@@ -10,9 +10,7 @@ export function DataCharts() {
       <Card className="col-span-4">
         <CardHeader>
           <CardTitle>Products and Tools by Country</CardTitle>
-          <CardDescription>
-            Distribution of products and tools across different manufacturing sites
-          </CardDescription>
+          <CardDescription>Distribution of products and tools across different manufacturing sites</CardDescription>
         </CardHeader>
         <CardContent className="pl-2">
           <ProductToolBarChart />
@@ -21,14 +19,12 @@ export function DataCharts() {
       <Card className="col-span-3">
         <CardHeader>
           <CardTitle>Product Type Distribution</CardTitle>
-          <CardDescription>
-            Breakdown of product types in the inventory
-          </CardDescription>
+          <CardDescription>Breakdown of product types in the inventory</CardDescription>
         </CardHeader>
         <CardContent>
           <ProductTypePieChart />
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

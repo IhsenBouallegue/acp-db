@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 const manufacturingSites = ["Brazil", "Canada", "China", "France", "Germany", "Mexico", "USA"];
@@ -94,6 +94,7 @@ export function MasterDataForm({
             <FormField
               key={field.name}
               control={form.control}
+              // biome-ignore lint/suspicious/noExplicitAny: <explanation>
               name={field.name as any}
               render={({ field: formField }) => (
                 <FormItem>

@@ -1,8 +1,8 @@
-import { IdeaExchangeOverview } from "@/components/overview-ideas-exchange";
-import { KnowledgeBaseOverview } from "@/components/overview-knowledge-base";
-import { MasterDataOverview } from "@/components/overview-master";
-import { QuickActions } from "@/components/overview-quick-actions";
-import { RecentActivity } from "@/components/overview-recent-activity";
+import { IdeaExchangeOverview } from "@/app/(overview)/overview-ideas-exchange";
+import { KnowledgeBaseOverview } from "@/app/(overview)/overview-knowledge-base";
+import { MasterDataOverview } from "@/app/(overview)/overview-master";
+import { QuickActions } from "@/app/(overview)/overview-quick-actions";
+import { RecentActivity } from "@/app/(overview)/overview-recent-activity";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Suspense } from "react";

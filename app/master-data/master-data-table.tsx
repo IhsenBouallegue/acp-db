@@ -66,6 +66,7 @@ export function MasterDataTable({ type }: { type: "products" | "tools" }) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const columns: ColumnDef<any>[] =
     type === "products"
       ? [
