@@ -23,8 +23,10 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  breadcrumb,
   children,
 }: Readonly<{
+  breadcrumb: React.ReactNode;
   children: React.ReactNode;
 }>) {
   return (
@@ -34,7 +36,7 @@ export default function RootLayout({
           <AppSidebar />
           <SidebarInset>
             <header className="flex h-16 shrink-0 items-center gap-2">
-              <TopBar />
+              <TopBar breadcrumb={breadcrumb} />
             </header>
             <main className="flex-1 h-[calc(100vh-4rem)]">{children}</main>
             <Toaster />

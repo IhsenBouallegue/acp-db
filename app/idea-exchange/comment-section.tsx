@@ -45,7 +45,9 @@ export function CommentSection({ post }: CommentSectionProps) {
             <div className="flex-grow">
               <p className="text-sm font-semibold">{comment.author.name}</p>
               <p className="text-sm">{comment.content}</p>
-              <p className="text-xs text-gray-500">{new Date(comment.timestamp).toLocaleString()}</p>
+              <p className="text-xs text-gray-500" suppressHydrationWarning>
+                {new Date(comment.timestamp).toLocaleString()}
+              </p>
             </div>
           </div>
         ))}

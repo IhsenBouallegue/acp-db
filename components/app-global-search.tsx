@@ -19,9 +19,17 @@ export default function GlobalSearch() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="w-[300px] justify-start text-left font-normal">
+        {/* Desktop Search Button */}
+        <Button variant="outline" className="hidden md:inline-flex w-[300px] justify-start text-left font-normal">
           <Search className="mr-2 h-4 w-4 text-muted-foreground" />
           <span className="text-muted-foreground">Search ACP DB...</span>
+        </Button>
+      </DialogTrigger>
+      {/* Mobile Search Button */}
+      <DialogTrigger asChild>
+        <Button variant="ghost" size="icon" className="md:hidden">
+          <Search className="h-4 w-4" />
+          <span className="sr-only">Search</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px] p-0 top-[5%] translate-y-0">
