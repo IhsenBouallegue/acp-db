@@ -4,6 +4,7 @@ export type Attachment = {
   id: number;
   type: "image" | "video" | "document";
   url: string;
+  fileName: string;
 };
 
 export type Comment = {
@@ -12,6 +13,7 @@ export type Comment = {
   authorId: number;
   content: string;
   timestamp: string;
+  attachments: Attachment[];
 };
 
 export type Post = {
@@ -47,4 +49,20 @@ export type Notification = {
   postId: number;
   timestamp: string;
   read: boolean;
+};
+
+export type AttachmentType = {
+  id: string;
+  type: "image" | "video" | "document";
+  url: string;
+  fileName: string;
+  fileSize: number;
+  createdAt: string;
+};
+
+export type UploadingAttachment = {
+  file: File;
+  previewUrl: string;
+  id: string;
+  type: "image" | "video" | "document";
 };

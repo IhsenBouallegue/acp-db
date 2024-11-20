@@ -51,7 +51,7 @@ export default async function BreadcrumbSlot({
   }
 
   return (
-    <Breadcrumb>
+    <Breadcrumb className="w-100% min-w-max">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/">Dashboard</BreadcrumbLink>

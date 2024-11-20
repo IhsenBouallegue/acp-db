@@ -1,35 +1,20 @@
 "use client";
 
+import { ContentInput } from "@/app/idea-exchange/content-input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { useSocialStore } from "@/store/social-store";
 import type { PostWithRelations } from "@/types/social.types";
-import { Paperclip, Send, Smile } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
 
 interface CommentSectionProps {
   post: PostWithRelations;
 }
 
 export function CommentSection({ post }: CommentSectionProps) {
-  const [commentInput, setCommentInput] = useState("");
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { currentUser, addComment } = useSocialStore();
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-    }
-  }, [commentInput]);
-
-  const handleSubmitComment = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (commentInput.trim()) {
-      addComment(post.id, commentInput);
-      setCommentInput("");
+  const handleSubmitComment = (content: string) => {
+    if (content.trim()) {
+      addComment(post.id, content);
     }
   };
 
@@ -52,56 +37,15 @@ export function CommentSection({ post }: CommentSectionProps) {
           </div>
         ))}
       </div>
-      <form onSubmit={handleSubmitComment} className="flex gap-2 w-full">
-        <Avatar className="h-8 w-8 flex-shrink-0">
-          <AvatarImage src={currentUser.avatar} alt={currentUser.name} />
-          <AvatarFallback>{currentUser.name[0]}</AvatarFallback>
-        </Avatar>
-        <div className="relative flex-1">
-          <Textarea
-            ref={textareaRef}
-            value={commentInput}
-            onChange={(e) => setCommentInput(e.target.value)}
-            placeholder="Write your comment"
-            className="pr-20 min-h-[40px] max-h-[200px] resize-none overflow-hidden"
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                handleSubmitComment(e);
-              }
-            }}
-          />
-          <div className="absolute right-1 bottom-1 flex items-center gap-1">
-            <Button
-              type="button"
-              size="icon"
-              variant="ghost"
-              className="h-8 w-8 text-muted-foreground hover:text-primary"
-            >
-              <Paperclip className="h-4 w-4" />
-              <span className="sr-only">Add attachment</span>
-            </Button>
-            <Button
-              type="button"
-              size="icon"
-              variant="ghost"
-              className="h-8 w-8 text-muted-foreground hover:text-primary"
-            >
-              <Smile className="h-4 w-4" />
-              <span className="sr-only">Add emoji</span>
-            </Button>
-            <Button
-              type="submit"
-              size="icon"
-              variant="ghost"
-              className="h-8 w-8 text-muted-foreground hover:text-primary"
-            >
-              <Send className="h-4 w-4" />
-              <span className="sr-only">Send comment</span>
-            </Button>
-          </div>
-        </div>
-      </form>
+      <ContentInput
+        onSubmitAction={handleSubmitComment}
+        placeholder="Write your comment"
+        avatarSrc={currentUser.avatar}
+        avatarFallback={currentUser.name[0]}
+        maxLength={1000}
+        maxRows={5}
+        className="mt-4"
+      />
     </>
   );
 }

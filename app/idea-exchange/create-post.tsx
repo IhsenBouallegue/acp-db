@@ -1,28 +1,23 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+"use client";
+
+import { ContentInput } from "@/app/idea-exchange/content-input";
 import { useSocialStore } from "@/store/social-store";
-import { useState } from "react";
+import type { UploadingAttachment } from "@/types/social.types";
 
 export function CreatePost() {
-  const [value, setValue] = useState("");
   const addPost = useSocialStore((state) => state.addPost);
+  const currentUser = useSocialStore((state) => state.currentUser);
 
-  const handleSubmit = () => {
-    if (!value.trim()) return;
-
-    addPost(value);
-    setValue("");
+  const handleSubmit = (content: string, attachments: UploadingAttachment[]) => {
+    addPost(content, attachments);
   };
 
   return (
-    <div className="flex gap-4">
-      <Input
-        placeholder="What's on your mind?"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        className="flex-grow"
-      />
-      <Button onClick={handleSubmit}>Post</Button>
-    </div>
+    <ContentInput
+      onSubmitAction={handleSubmit}
+      placeholder="What's on your mind?"
+      avatarSrc={currentUser?.avatar}
+      avatarFallback={currentUser?.name?.[0]}
+    />
   );
 }

@@ -1,5 +1,5 @@
 import { getFullPost, mockPosts, socialComments } from "@/data/social-data";
-import type { Post, PostWithRelations } from "@/types/social.types";
+import type { AttachmentType, Post, PostWithRelations, UploadingAttachment } from "@/types/social.types";
 import type { User } from "@/types/user.types";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
@@ -7,7 +7,7 @@ import { immer } from "zustand/middleware/immer";
 interface SocialState {
   posts: Post[];
   currentUser: User;
-  addPost: (content: string) => void;
+  addPost: (content: string, attachments: UploadingAttachment[]) => void;
   toggleLike: (postId: number) => void;
   toggleBookmark: (postId: number) => void;
   addComment: (postId: number, content: string) => void;
@@ -34,7 +34,16 @@ export const useSocialStore = create(
       }
       return fullPost as PostWithRelations;
     },
-    addPost: (content) =>
+    addPost: (content: string, attachments: UploadingAttachment[] = []) => {
+      const newAttachments: AttachmentType[] = attachments.map((att) => ({
+        id: att.id,
+        type: att.type,
+        url: att.previewUrl,
+        fileName: att.file.name,
+        fileSize: att.file.size,
+        createdAt: new Date().toISOString(),
+      }));
+
       set((state) => ({
         posts: [
           {
@@ -44,14 +53,15 @@ export const useSocialStore = create(
             timestamp: new Date().toISOString(),
             likes: 0,
             commentIds: [],
-            attachments: [],
+            attachments: newAttachments,
             mentionIds: [],
             bookmarked: false,
             liked: false,
           },
           ...state.posts,
         ],
-      })),
+      }));
+    },
     toggleLike: (postId) =>
       set((state) => {
         const post = state.posts.find((p) => p.id === postId);
@@ -76,6 +86,7 @@ export const useSocialStore = create(
           authorId: state.currentUser.id,
           content,
           timestamp: new Date().toISOString(),
+          attachments: [],
         };
         socialComments.push(newComment);
 
