@@ -18,6 +18,7 @@ export function CreatePost() {
       placeholder="What's on your mind?"
       avatarSrc={currentUser?.avatar}
       avatarFallback={currentUser?.name?.[0]}
+      initialHeight={120}
     />
   );
 }

@@ -20,7 +20,7 @@ export function PostCard({ post }: PostCardProps) {
   };
 
   return (
-    <Card className="p-4">
+    <Card className="p-4 rounded-sm">
       <CardHeader className="flex flex-row items-center gap-4">
         <Avatar>
           <AvatarImage src={post.author.avatar} alt={post.author.name} />

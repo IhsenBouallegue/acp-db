@@ -35,9 +35,7 @@ export default function RootLayout({
         <Providers>
           <AppSidebar />
           <SidebarInset>
-            <header className="flex h-16 shrink-0 items-center gap-2">
-              <TopBar breadcrumb={breadcrumb} />
-            </header>
+            <TopBar breadcrumb={breadcrumb} />
             <main className="flex-1 h-[calc(100vh-4rem)]">{children}</main>
             <Toaster />
           </SidebarInset>

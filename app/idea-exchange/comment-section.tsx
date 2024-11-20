@@ -17,6 +17,19 @@ export function CommentSection({ post }: CommentSectionProps) {
       addComment(post.id, content);
     }
   };
+  const CommentInput = (
+    <ContentInput
+      onSubmitAction={handleSubmitComment}
+      placeholder="Write your comment"
+      avatarSrc={currentUser.avatar}
+      avatarFallback={currentUser.name[0]}
+      maxLength={280}
+      maxRows={5}
+      className="mt-4"
+    />
+  );
+
+  if (!post.comments.length) return CommentInput;
 
   return (
     <>
@@ -37,15 +50,7 @@ export function CommentSection({ post }: CommentSectionProps) {
           </div>
         ))}
       </div>
-      <ContentInput
-        onSubmitAction={handleSubmitComment}
-        placeholder="Write your comment"
-        avatarSrc={currentUser.avatar}
-        avatarFallback={currentUser.name[0]}
-        maxLength={1000}
-        maxRows={5}
-        className="mt-4"
-      />
+      {CommentInput}
     </>
   );
 }

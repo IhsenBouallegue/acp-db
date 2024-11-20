@@ -17,10 +17,8 @@ import {
 import {
   BookOpen,
   Bookmark,
-  Command,
   Database,
   FileText,
-  Heart,
   Home,
   LifeBuoy,
   Lightbulb,

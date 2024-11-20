@@ -23,10 +23,10 @@ export function PostActions({ post }: PostActionsProps) {
           <Heart className={`w-4 h-4 mr-2 ${post.liked ? "fill-current text-red-500" : ""}`} />
           {post.likes}
         </Button>
-        <Button variant="ghost" size="sm">
+        <div className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ">
           <MessageCircle className="w-4 h-4 mr-2" />
           {post.comments.length}
-        </Button>
+        </div>
       </div>
       <div className="flex gap-4">
         <Button

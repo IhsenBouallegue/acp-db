@@ -22,23 +22,21 @@ export default function GlobalSearch() {
         {/* Desktop Search Button*/}
         <Button
           variant="outline"
-          className="hidden md:inline-flex w-[300px] justify-start text-left font-normal absolute left-1/2 -translate-x-1/2"
+          className="hidden md:inline-flex w-[300px] text-left font-normal hover:text-white text-muted-foreground "
         >
-          <Search className="mr-2 h-4 w-4 text-muted-foreground" />
-          <span className="text-muted-foreground">Search ACP DB...</span>
+          <Search className="mr-2 h-4 w-4" />
+          <span>Search ACP DB...</span>
         </Button>
       </DialogTrigger>
       {/* Mobile Search Button */}
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="md:hidden absolute right-4">
+        <Button variant="ghost" size="icon" className="md:hidden">
           <Search className="h-4 w-4" />
           <span className="sr-only">Search</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[700px] p-0 top-[5%] translate-y-0">
-        <DialogHeader className="px-4 py-2">
-          <DialogTitle>Search ACP DB</DialogTitle>
-        </DialogHeader>
+      <DialogContent className="sm:max-w-3xl p-2 top-[5%] translate-y-0">
+        <DialogTitle hidden>Search ACP DB</DialogTitle>
         <Command shouldFilter={false}>
           <CommandInput
             placeholder="Search or use @users, @products, @machines, @posts..."

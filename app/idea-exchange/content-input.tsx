@@ -15,6 +15,7 @@ interface ContentInputProps {
   placeholder?: string;
   avatarSrc?: string;
   avatarFallback?: string;
+  initialHeight?: number;
   maxLength?: number;
   className?: string;
   maxRows?: number;
@@ -25,6 +26,7 @@ export function ContentInput({
   placeholder = "Write your content...",
   avatarSrc,
   avatarFallback,
+  initialHeight = 80,
   maxLength = 280,
   className,
   maxRows = 5,
@@ -33,7 +35,6 @@ export function ContentInput({
   const [attachments, setAttachments] = useState<UploadingAttachment[]>([]);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const initialHeight = 80;
   const maxHeight = maxRows * 40;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -100,7 +101,7 @@ export function ContentInput({
     if (textareaRef.current) {
       textareaRef.current.style.height = `${initialHeight}px`;
     }
-  }, []);
+  }, [initialHeight]);
 
   const remainingCharacters = maxLength - value.length;
 

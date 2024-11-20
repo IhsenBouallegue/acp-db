@@ -4,17 +4,17 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export function TopBar({ breadcrumb }: { breadcrumb: React.ReactNode }) {
   return (
-    <div className="sticky top-0 z-10 bg-background px-4 py-4 shadow-sm w-full">
-      <div className="flex flex-row items-center w-full gap-4">
-        <div className="flex items-center gap-2 w-full md:w-auto">
-          <SidebarTrigger className="-ml-1" />
-          <Separator orientation="vertical" className="mr-2 h-4" />
+    <header className="relative flex h-16 shrink-0 items-center gap-2 border-b">
+      <div className="absolute z-20 pl-4 md:pl-6 flex items-center">
+        <SidebarTrigger className="-ml-1" />
+        <div className="hidden md:flex">
+          <Separator orientation="vertical" className="mx-2 h-4" />
           {breadcrumb}
         </div>
-        <div className="flex items-center justify-center w-full ">
-          <GlobalSearch />
-        </div>
       </div>
-    </div>
+      <div className="absolute z-10 w-full flex-1 flex justify-end md:justify-center">
+        <GlobalSearch />
+      </div>
+    </header>
   );
 }
