@@ -20,13 +20,13 @@ body {
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 207 100% 35%;      /* #0066B3 - Main blue */
+    --primary: 207 100% 35%; /* #0066B3 - Main blue */
     --primary-foreground: 0 0% 100%;
-    --secondary: 206 100% 25%;    /* Darker blue for secondary elements */
+    --secondary: 206 100% 25%; /* Darker blue for secondary elements */
     --secondary-foreground: 0 0% 100%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 84 100% 38%;        /* #66CC00 - Green accent from chat button */
+    --accent: 84 100% 38%; /* #66CC00 - Green accent from chat button */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -35,7 +35,7 @@ body {
     --ring: 207 100% 35%;
     --chart-1: 207 100% 35%;
     --chart-2: 206 100% 25%;
-    --chart-3: 84 100% 38%;       /* Green accent for chart variety */
+    --chart-3: 84 100% 38%; /* Green accent for chart variety */
     --chart-4: 205 100% 30%;
     --chart-5: 209 100% 40%;
     --radius: 0.5rem;
@@ -62,7 +62,7 @@ body {
     --secondary-foreground: 0 0% 100%;
     --muted: 206 100% 25%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 84 100% 38%;        /* Green accent maintained in dark mode */
+    --accent: 84 100% 38%; /* Green accent maintained in dark mode */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -71,7 +71,7 @@ body {
     --ring: 0 0% 100%;
     --chart-1: 0 0% 100%;
     --chart-2: 210 40% 90%;
-    --chart-3: 84 100% 38%;       /* Green accent for chart variety */
+    --chart-3: 84 100% 38%; /* Green accent for chart variety */
     --chart-4: 205 100% 30%;
     --chart-5: 209 100% 40%;
     --sidebar-background: 240 5.9% 10%;

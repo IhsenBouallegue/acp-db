@@ -27,14 +27,14 @@ export default function SocialMediaTimeline() {
     <PageContainer>
       <PageHeading className="text-center">Idea Exchange Platform</PageHeading>
       <div className="w-full flex justify-center">
-        <div className="flex pt-6 flex-col gap-4 max-w-3xl w-full">
-          <CreatePost />
+        <div className="flex pt-6 flex-col gap-6 max-w-3xl w-full">
           <SearchAndFilter
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
             sortBy={sortBy}
             onSortChange={setSortBy}
           />
+          <CreatePost />
           {filteredAndSortedPosts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}

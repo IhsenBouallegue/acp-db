@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogClose, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogClose, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Download, Expand, FileText, Film, ImageIcon, Trash2, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -86,20 +86,21 @@ export function AttachmentPreview({ attachment, onDownload, onDelete }: Attachme
               {attachment.type === "image" && <ImageIcon className="h-4 w-4" />}
               {attachment.type === "video" && <Film className="h-4 w-4" />}
               {attachment.type === "document" && <FileText className="h-4 w-4" />}
-              <span className="text-sm font-medium">{attachment.fileName}</span>
+              <span className="text-sm font-medium truncate">{attachment.fileName}</span>
             </div>
           </div>
         </CardContent>
       </Card>
 
       <Dialog open={isExpanded} onOpenChange={handleClose}>
+        <DialogTitle hidden>{attachment.fileName}</DialogTitle>
         <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none rounded-lg overflow-hidden">
           <div className="relative w-full h-full">
-            <DialogClose className="absolute top-2 right-2 z-50">
+            <DialogClose asChild>
               <Button
                 size="icon"
                 variant="ghost"
-                className="h-8 w-8 rounded-full bg-black/50 text-white hover:bg-black/75 hover:text-white"
+                className="absolute top-2 right-2 z-50 h-8 w-8 rounded-full bg-black/50 text-white hover:bg-black/75 hover:text-white"
               >
                 <X className="h-4 w-4" />
                 <span className="sr-only">Close</span>

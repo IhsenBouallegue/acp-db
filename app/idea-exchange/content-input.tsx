@@ -117,9 +117,9 @@ export function ContentInput({
   return (
     <form onSubmit={handleSubmit} className={cn("space-y-2 w-full", className)}>
       <div className="flex gap-2 w-full items-start">
-        <Avatar className="h-8 w-8 flex-shrink-0">
+        <Avatar>
           <AvatarImage src={avatarSrc} alt={avatarFallback} />
-          <AvatarFallback className="text-black">
+          <AvatarFallback>
             {avatarFallback
               ?.split(" ")
               .map((n) => n[0])

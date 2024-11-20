@@ -18,9 +18,9 @@ export const useSocialStore = create(
   immer<SocialState>((set, get) => ({
     posts: mockPosts,
     currentUser: {
-      id: 1,
-      name: "Current User",
-      email: "current.user@acp-global.net",
+      id: 4,
+      name: "Max Mustermann",
+      email: "max.mustermann@acp-global.net",
       role: "User",
       status: "registered",
       isOnline: true,

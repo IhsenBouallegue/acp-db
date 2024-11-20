@@ -28,6 +28,16 @@ export const users: User[] = [
     isOnline: false,
     invitedAt: new Date(Date.now() - 86400000),
   },
+  {
+    id: 4,
+    name: "Max Mustermann",
+    email: "max.mustermann@acp-global.net",
+    role: "User",
+    status: "registered",
+    isOnline: true,
+    avatar: "",
+    lastActive: new Date(),
+  },
 ];
 
 export const accessLevels: AccessLevel[] = [
