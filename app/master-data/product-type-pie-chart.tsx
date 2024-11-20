@@ -2,17 +2,17 @@
 
 import * as React from "react";
 import { TrendingUp } from "lucide-react";
-import { Label, Pie, PieChart } from "recharts";
+import { Label, Pie, PieChart, Cell } from "recharts";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 const chartData = [
-  { type: "Type A", count: 275, fill: "var(--color-type-a)" },
-  { type: "Type B", count: 200, fill: "var(--color-type-b)" },
-  { type: "Type C", count: 187, fill: "var(--color-type-c)" },
-  { type: "Type D", count: 173, fill: "var(--color-type-d)" },
-  { type: "Type E", count: 90, fill: "var(--color-type-e)" },
+  { type: "Type A", count: 275, fill: "hsl(var(--chart-1))" },
+  { type: "Type B", count: 200, fill: "hsl(var(--chart-2))" },
+  { type: "Type C", count: 187, fill: "hsl(var(--chart-3))" },
+  { type: "Type D", count: 173, fill: "hsl(var(--chart-4))" },
+  { type: "Type E", count: 90, fill: "hsl(var(--chart-5))" },
 ];
 
 const chartConfig = {
@@ -21,26 +21,6 @@ const chartConfig = {
   },
   type: {
     label: "Type",
-  },
-  "Type A": {
-    label: "Type A",
-    color: "hsl(var(--chart-1))",
-  },
-  "Type B": {
-    label: "Type B",
-    color: "hsl(var(--chart-2))",
-  },
-  "Type C": {
-    label: "Type C",
-    color: "hsl(var(--chart-3))",
-  },
-  "Type D": {
-    label: "Type D",
-    color: "hsl(var(--chart-4))",
-  },
-  "Type E": {
-    label: "Type E",
-    color: "hsl(var(--chart-5))",
   },
 };
 
@@ -59,7 +39,17 @@ export function ProductTypePieChart() {
         <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
           <PieChart>
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-            <Pie data={chartData} dataKey="count" nameKey="type" innerRadius={60} strokeWidth={5}>
+            <Pie 
+              data={chartData} 
+              dataKey="count" 
+              nameKey="type" 
+              innerRadius={60} 
+              strokeWidth={5}
+              fill="#8884d8"
+            >
+              {chartData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
+              ))}
               <Label
                 content={({ viewBox }) => {
                   if (viewBox && "cx" in viewBox && "cy" in viewBox) {

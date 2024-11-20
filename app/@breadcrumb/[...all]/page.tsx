@@ -39,7 +39,7 @@ export default async function BreadcrumbSlot({
     } else {
       breadcrumbItems.push(
         <React.Fragment key={href}>
-          <BreadcrumbItem>
+          <BreadcrumbItem >
             <BreadcrumbLink href={href} className="capitalize">
               {label}
             </BreadcrumbLink>

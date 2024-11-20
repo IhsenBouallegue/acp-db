@@ -34,7 +34,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>
           <AppSidebar />
-          <SidebarInset>
+          <SidebarInset className="overflow-hidden">
             <TopBar breadcrumb={breadcrumb} />
             <main className="flex-1 h-[calc(100vh-4rem)]">{children}</main>
             <Toaster />
