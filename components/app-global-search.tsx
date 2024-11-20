@@ -19,15 +19,18 @@ export default function GlobalSearch() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        {/* Desktop Search Button */}
-        <Button variant="outline" className="hidden md:inline-flex w-[300px] justify-start text-left font-normal">
+        {/* Desktop Search Button*/}
+        <Button
+          variant="outline"
+          className="hidden md:inline-flex w-[300px] justify-start text-left font-normal absolute left-1/2 -translate-x-1/2"
+        >
           <Search className="mr-2 h-4 w-4 text-muted-foreground" />
           <span className="text-muted-foreground">Search ACP DB...</span>
         </Button>
       </DialogTrigger>
       {/* Mobile Search Button */}
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="md:hidden">
+        <Button variant="ghost" size="icon" className="md:hidden absolute right-4">
           <Search className="h-4 w-4" />
           <span className="sr-only">Search</span>
         </Button>
@@ -47,7 +50,7 @@ export default function GlobalSearch() {
             {results.length > 0 && (
               <CommandGroup>
                 {results.map((result) => (
-                  <CommandItem key={result.id} onSelect={() => handleSelect(result.name)}>
+                  <CommandItem key={`${result.category}-${result.name}`} onSelect={() => handleSelect(result.name)}>
                     {getCategoryIcon(result.category)}
                     <span>{result.name}</span>
                   </CommandItem>
