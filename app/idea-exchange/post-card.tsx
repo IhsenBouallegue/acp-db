@@ -24,7 +24,12 @@ export function PostCard({ post }: PostCardProps) {
       <CardHeader className="flex flex-row items-center gap-4">
         <Avatar>
           <AvatarImage src={post.author.avatar} alt={post.author.name} />
-          <AvatarFallback>{post.author.name[0]}</AvatarFallback>
+          <AvatarFallback>
+            {post.author.name
+              .split(" ")
+              .map((n) => n[0])
+              .join("")}
+          </AvatarFallback>
         </Avatar>
         <div className="flex flex-col">
           <p className="font-semibold">{post.author.name}</p>

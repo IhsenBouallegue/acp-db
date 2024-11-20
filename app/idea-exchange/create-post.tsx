@@ -17,7 +17,7 @@ export function CreatePost() {
       onSubmitAction={handleSubmit}
       placeholder="What's on your mind?"
       avatarSrc={currentUser?.avatar}
-      avatarFallback={currentUser?.name?.[0]}
+      avatarFallback={currentUser?.name}
       initialHeight={120}
     />
   );

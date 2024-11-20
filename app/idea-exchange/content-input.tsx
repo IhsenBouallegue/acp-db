@@ -119,7 +119,12 @@ export function ContentInput({
       <div className="flex gap-2 w-full items-start">
         <Avatar className="h-8 w-8 flex-shrink-0">
           <AvatarImage src={avatarSrc} alt={avatarFallback} />
-          <AvatarFallback>{avatarFallback}</AvatarFallback>
+          <AvatarFallback className="text-black">
+            {avatarFallback
+              ?.split(" ")
+              .map((n) => n[0])
+              .join("")}
+          </AvatarFallback>
         </Avatar>
         <div className="relative flex-1">
           <div className="relative bg-background rounded-md">

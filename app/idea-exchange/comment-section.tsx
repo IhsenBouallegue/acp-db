@@ -22,7 +22,7 @@ export function CommentSection({ post }: CommentSectionProps) {
       onSubmitAction={handleSubmitComment}
       placeholder="Write your comment"
       avatarSrc={currentUser.avatar}
-      avatarFallback={currentUser.name[0]}
+      avatarFallback={currentUser.name}
       maxLength={280}
       maxRows={5}
       className="mt-4"

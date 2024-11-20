@@ -4,12 +4,52 @@ import { Button } from "@/components/ui/button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { categoryConfigs, defaultIcon } from "@/config/search-config";
+import { machines, products } from "@/data/master-data";
 import { useSearch } from "@/hooks/useSearch";
-import type { SearchCategory } from "@/types/search.types";
+import { useSocialStore } from "@/store/social-store";
+import { useUserStore } from "@/store/user-store";
+import type { SearchCategory, SearchResult } from "@/types/search.types";
 import { Search } from "lucide-react";
+import { useMemo } from "react";
 
 export default function GlobalSearch() {
-  const { open, setOpen, query, setQuery, results, handleSelect } = useSearch();
+  const posts = useSocialStore((state) => state.posts);
+  const users = useUserStore((state) => state.users);
+
+  const searchData = useMemo(
+    (): SearchResult[] => [
+      // Users from store
+      ...users.map((user) => ({
+        id: user.id.toString(),
+        name: user.name,
+        category: "users" as const,
+      })),
+
+      // Products from master data
+      ...products.map((product) => ({
+        id: product.id.toString(),
+        name: `Product ${product.designNumber}`,
+        category: "products" as const,
+      })),
+
+      // Machines from master data
+      ...machines.map((machine) => ({
+        id: machine.id.toString(),
+        name: `Machine ${machine.designNumber}`,
+        category: "machines" as const,
+      })),
+
+      // Posts from social store
+      ...posts.map((post) => ({
+        id: post.id.toString(),
+        name: post.content,
+        category: "posts" as const,
+      })),
+    ],
+    [users, posts],
+  );
+
+  const { open, setOpen, query, setQuery, results, handleSelect } = useSearch({ searchData });
 
   const getCategoryIcon = (category: SearchCategory) => {
     const config = categoryConfigs.find((c) => c.id === category);

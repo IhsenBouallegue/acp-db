@@ -24,7 +24,7 @@ export const useSocialStore = create(
       role: "User",
       status: "registered",
       isOnline: true,
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "",
       lastActive: new Date(),
     },
     getPostWithRelations: (post) => {
