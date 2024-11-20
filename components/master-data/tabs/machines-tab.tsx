@@ -1,7 +1,6 @@
+import { MasterDataDialog } from "@/app/master-data/master-data-dialog";
 import { MasterDataTable } from "@/app/master-data/master-data-table";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { PlusCircle } from "lucide-react";
 
 export function MachinesTab() {
   return (
@@ -9,10 +8,11 @@ export function MachinesTab() {
       <CardHeader>
         <div className="flex justify-between items-center">
           <CardTitle>Machines</CardTitle>
-          <Button>
-            <PlusCircle className="mr-2 h-4 w-4" />
-            Add Machine
-          </Button>
+          <MasterDataDialog
+            type="machines"
+            title="Add New Machine"
+            description="Add a new machine to the master data."
+          />
         </div>
         <CardDescription>A list of all machines.</CardDescription>
       </CardHeader>

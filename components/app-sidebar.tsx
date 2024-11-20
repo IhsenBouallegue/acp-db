@@ -17,7 +17,9 @@ import {
 import {
   BookOpen,
   Bookmark,
+  Clock,
   Database,
+  Factory,
   FileText,
   Home,
   LifeBuoy,
@@ -26,6 +28,9 @@ import {
   Send,
   Settings2,
   Users,
+  FileSpreadsheet,
+  MessageSquare,
+  Wrench,
 } from "lucide-react";
 import Link from "next/link";
 import type * as React from "react";
@@ -44,9 +49,24 @@ const data = {
       isActive: false,
     },
     {
-      title: "Master Data Management",
-      url: "/master-data",
-      icon: Database,
+      title: "Production",
+      url: "/production",
+      icon: Factory,
+    },
+    {
+      title: "Metalstrips and Tools",
+      url: "/metalstrips-tools",
+      icon: Wrench,
+    },
+    {
+      title: "Downtime Definitions",
+      url: "/downtime-definitions",
+      icon: Clock,
+    },
+    {
+      title: "Material Specs",
+      url: "/material-specs",
+      icon: FileSpreadsheet,
     },
     {
       title: "Knowledge Base",
@@ -66,7 +86,7 @@ const data = {
     {
       title: "Idea Exchange",
       url: "/idea-exchange",
-      icon: Lightbulb,
+      icon: MessageSquare,
     },
     {
       title: "User Management",

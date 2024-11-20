@@ -27,7 +27,7 @@ export function ContentInput({
   avatarSrc,
   avatarFallback,
   initialHeight = 80,
-  maxLength = 280,
+  maxLength = 1000,
   className,
   maxRows = 5,
 }: ContentInputProps) {
