@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { PageContainer } from "@/components/ui/page-container";
 import { PageHeading } from "@/components/ui/page-heading";
 import { PageSubheading } from "@/components/ui/page-subheading";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -49,7 +50,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="container">
+    <PageContainer>
       <PageHeading>Settings</PageHeading>
       <PageSubheading>Manage your account preferences and application settings</PageSubheading>
       <Card>
@@ -185,6 +186,6 @@ export default function SettingsPage() {
           </Button>
         </CardFooter>
       </Card>
-    </div>
+    </PageContainer>
   );
 }
