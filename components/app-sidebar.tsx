@@ -22,6 +22,7 @@ import {
   Factory,
   FileSpreadsheet,
   FileText,
+  HelpCircle,
   Home,
   LifeBuoy,
   Lightbulb,
@@ -46,7 +47,7 @@ const data = {
       title: "Dashboard",
       url: "/",
       icon: Home,
-      isActive: false,
+      isActive: true,
     },
     {
       title: "Production",
@@ -72,14 +73,18 @@ const data = {
       title: "Knowledge Base",
       url: "/knowledge-base",
       icon: BookOpen,
+      isActive: true,
+
       items: [
         {
           title: "Setup Guideline",
           url: "/knowledge-base/setup-guideline",
+          icon: FileText,
         },
         {
           title: "Troubleshoot",
           url: "/knowledge-base/troubleshoot",
+          icon: HelpCircle,
         },
       ],
     },
