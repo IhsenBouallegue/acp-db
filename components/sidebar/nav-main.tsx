@@ -15,6 +15,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
+import { usePathname } from "next/navigation";
 
 export function NavMain({
   items,
@@ -23,7 +24,7 @@ export function NavMain({
     title: string;
     url: string;
     icon: LucideIcon;
-    isActive?: boolean;
+    defaultOpen?: boolean;
     items?: {
       title: string;
       url: string;
@@ -31,14 +32,16 @@ export function NavMain({
     }[];
   }[];
 }) {
+  const pathname = usePathname();
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
-          <Collapsible key={item.title} asChild defaultOpen={item.isActive}>
+          <Collapsible key={item.title} asChild defaultOpen={item.defaultOpen}>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip={item.title}>
+              <SidebarMenuButton asChild tooltip={item.title} isActive={pathname === item.url}>
                 <a href={item.url}>
                   <item.icon />
                   <span>{item.title}</span>
@@ -56,7 +59,7 @@ export function NavMain({
                     <SidebarMenuSub>
                       {item.items?.map((subItem) => (
                         <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton asChild>
+                          <SidebarMenuSubButton asChild isActive={pathname === subItem.url}>
                             <a href={subItem.url}>
                               {subItem.icon && <subItem.icon />}
                               <span>{subItem.title}</span>

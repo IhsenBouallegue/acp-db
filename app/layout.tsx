@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Toaster } from "sonner";
 import "./globals.css";
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/components/sidebar/app-sidebar";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",

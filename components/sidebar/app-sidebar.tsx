@@ -1,10 +1,10 @@
 "use client";
 
 import { Logo } from "@/components/logo";
-import { NavMain } from "@/components/nav-main";
-import { NavQuickLinks } from "@/components/nav-quick-links";
-import { NavSecondary } from "@/components/nav-secondary";
-import { NavUser } from "@/components/nav-user";
+import { NavMain } from "@/components/sidebar/nav-main";
+import { NavQuickLinks } from "@/components/sidebar/nav-quick-links";
+import { NavSecondary } from "@/components/sidebar/nav-secondary";
+import { NavUser } from "@/components/sidebar/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -18,14 +18,12 @@ import {
   BookOpen,
   Bookmark,
   Clock,
-  Database,
   Factory,
   FileSpreadsheet,
   FileText,
   HelpCircle,
   Home,
   LifeBuoy,
-  Lightbulb,
   MessageSquare,
   Pin,
   Send,
@@ -47,7 +45,6 @@ const data = {
       title: "Dashboard",
       url: "/",
       icon: Home,
-      isActive: true,
     },
     {
       title: "Production",
@@ -73,7 +70,7 @@ const data = {
       title: "Knowledge Base",
       url: "/knowledge-base",
       icon: BookOpen,
-      isActive: true,
+      defaultOpen: true,
 
       items: [
         {

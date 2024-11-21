@@ -57,7 +57,7 @@ export default function NotFound() {
             <Link href="/">Go to Dashboard</Link>
           </Button>
           <Button asChild>
-            <Link href="/master-data">Explore Metalstrips & Tools</Link>
+            <Link href="/metalstrips-tools">Explore Metalstrips & Tools</Link>
           </Button>
         </CardFooter>
       </Card>

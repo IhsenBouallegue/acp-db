@@ -1,4 +1,7 @@
+"use client";
+
 import type { LucideIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 import type * as React from "react";
 
 import {
@@ -8,7 +11,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import Link from "next/link";
 
 export function NavSecondary({
   items,
@@ -18,19 +20,22 @@ export function NavSecondary({
     title: string;
     url: string;
     icon: LucideIcon;
+    defaultOpen?: boolean;
   }[];
 } & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
+  const pathname = usePathname();
+
   return (
     <SidebarGroup {...props}>
       <SidebarGroupContent>
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild size="sm">
-                <Link href={item.url}>
+              <SidebarMenuButton asChild size="sm" isActive={pathname === item.url}>
+                <a href={item.url}>
                   <item.icon />
                   <span>{item.title}</span>
-                </Link>
+                </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
