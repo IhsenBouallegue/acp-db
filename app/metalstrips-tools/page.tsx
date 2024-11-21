@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function MetalstripsToolsPage() {
   return (
     <PageContainer>
-      <PageHeading className="text-3xl font-bold mb-6">Metalstrips and Tools Management</PageHeading>
+      <PageHeading>Metalstrips and Tools Management</PageHeading>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
         <Card>

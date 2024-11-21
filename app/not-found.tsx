@@ -38,7 +38,7 @@ export default function NotFound() {
         }}
         aria-hidden="true"
       />
-      <Card className="w-full max-w-md shadow-lg relative z-20 bg-card/95 backdrop-blur-sm mt-[10vh]">
+      <Card className="w-full max-w-md shadow-lg relative z-20 bg-card/95 backdrop-blur-sm m-4 md:m-0 md:mt-[10vh]">
         <CardHeader>
           <CardTitle className="text-4xl font-bold text-center text-primary">404</CardTitle>
         </CardHeader>
@@ -52,7 +52,7 @@ export default function NotFound() {
             We're still working on this page. Our team is building new features to enhance your experience.
           </p>
         </CardContent>
-        <CardFooter className="flex justify-center space-x-4">
+        <CardFooter className="flex justify-center flex-col md:flex-row gap-4">
           <Button asChild variant="outline">
             <Link href="/">Go to Dashboard</Link>
           </Button>

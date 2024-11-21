@@ -1,8 +1,9 @@
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-export function Logo() {
+export function Logo({ className }: { className?: string }) {
   return (
-    <div className="relative h-8 w-32">
+    <div className={cn("relative h-8 w-32", className)}>
       <Image
         src="/acp_group.png"
         alt="ACP Group Logo"

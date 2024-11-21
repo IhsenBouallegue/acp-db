@@ -1,4 +1,5 @@
 import GlobalSearch from "@/components/app-global-search";
+import { Logo } from "@/components/logo";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
@@ -12,7 +13,10 @@ export function TopBar({ breadcrumb }: { breadcrumb: React.ReactNode }) {
           {breadcrumb}
         </div>
       </div>
-      <div className="absolute z-10 w-full flex-1 flex justify-end md:justify-center">
+      <div className="absolute z-10 w-full flex-1 flex justify-center md:hidden">
+        <h1 className="text-md font-bold">ACP DB</h1>
+      </div>
+      <div className="absolute z-10 w-full flex-1 flex justify-end pr-4 md:pr-0 md:justify-center">
         <GlobalSearch />
       </div>
     </header>
