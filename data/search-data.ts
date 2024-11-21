@@ -1,6 +1,6 @@
 import { mockPosts } from "@/data/social-data";
 import type { SearchResult } from "@/types/search.types";
-import { machines, products } from "./master-data";
+import { machines, metalstrips } from "./master-data";
 
 export const mockDatabase: SearchResult[] = [
   // Users
@@ -8,17 +8,17 @@ export const mockDatabase: SearchResult[] = [
   { id: "2", name: "Jane Smith", category: "users" },
   { id: "3", name: "Alice Johnson", category: "users" },
 
-  // Products
-  ...products.map((product) => ({
+  // Metalstrips
+  ...metalstrips.map((product) => ({
     id: product.id.toString(),
-    name: `Product ${product.designNumber}`,
-    category: "products" as const,
+    name: `Metalstrip ${product.designNumber}`,
+    category: "metalstrips" as const,
   })),
 
-  // Machines
+  // Tools
   ...machines.map((machine) => ({
     id: machine.id.toString(),
-    name: `Machine ${machine.designNumber}`,
+    name: `Tool ${machine.designNumber}`,
     category: "machines" as const,
   })),
 

@@ -10,10 +10,15 @@ import React from "react";
 import type { ReactElement } from "react";
 
 const routeMap: Record<string, string> = {
-  "master-data": "Master Data",
   "idea-exchange": "Idea Exchange",
   "knowledge-base": "Knowledge Base",
   "user-management": "User Management",
+  "metalstrips-tools": "Metalstrips & Toolss",
+  "downtime-definitions": "Downtime Definitions",
+  "material-specs": "Material Specs",
+  "setup-guideline": "Setup Guideline",
+  troubleshoot: "Troubleshoot",
+
   settings: "Settings",
 };
 
@@ -39,7 +44,7 @@ export default async function BreadcrumbSlot({
     } else {
       breadcrumbItems.push(
         <React.Fragment key={href}>
-          <BreadcrumbItem >
+          <BreadcrumbItem>
             <BreadcrumbLink href={href} className="capitalize">
               {label}
             </BreadcrumbLink>

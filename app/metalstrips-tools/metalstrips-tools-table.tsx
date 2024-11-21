@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { machines, manufacturingSites, products } from "@/data/master-data";
+import { machines, manufacturingSites, metalstrips } from "@/data/master-data";
 import {
   type ColumnDef,
   type ColumnFiltersState,
@@ -18,13 +18,13 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 
-export function MasterDataTable({ type }: { type: "products" | "machines" }) {
+export function MetalstripsToolsTable({ type }: { type: "metalstrips" | "machines" }) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const columns: ColumnDef<any>[] =
-    type === "products"
+    type === "metalstrips"
       ? [
           { accessorKey: "width", header: "Width" },
           { accessorKey: "thickness", header: "Thickness" },
@@ -38,11 +38,11 @@ export function MasterDataTable({ type }: { type: "products" | "machines" }) {
           { accessorKey: "notch", header: "Notch" },
           { accessorKey: "louverWidth", header: "Louver Width" },
           { accessorKey: "designNumber", header: "Design Number" },
-          { accessorKey: "machineSetNumber", header: "Machine Set Number" },
+          { accessorKey: "machineSetNumber", header: "Tool Set Number" },
           { accessorKey: "manufacturingSite", header: "Manufacturing Site" },
         ];
 
-  const data = type === "products" ? products : machines;
+  const data = type === "metalstrips" ? metalstrips : machines;
 
   const table = useReactTable({
     data,

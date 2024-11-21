@@ -1,4 +1,4 @@
-export interface Product {
+export interface Metalstrip {
   id: number;
   width: string;
   thickness: string;
@@ -16,7 +16,7 @@ export interface Product {
   applicationInfo: string;
 }
 
-export interface Machine {
+export interface Tool {
   id: number;
   web: string;
   notch: string;

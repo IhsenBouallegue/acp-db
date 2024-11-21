@@ -14,7 +14,7 @@ export function QuickActions() {
       <CardContent className="flex flex-col gap-2">
         <Button className="w-full justify-start">
           <PlusCircle className="mr-2 h-4 w-4" />
-          Add Master Data
+          Add Metalstrips & Tools
         </Button>
         <Button className="w-full justify-start" variant="outline">
           <MagnifyingGlassIcon className="mr-2 h-4 w-4" />

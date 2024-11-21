@@ -9,7 +9,7 @@ export function RecentActivity() {
       id: 1,
       user: "John Doe",
       action: "added a new article",
-      target: "Setup Guide for Product X",
+      target: "Setup Guide for Metalstrip X",
       timestamp: "2 hours ago",
     },
     {
@@ -23,7 +23,7 @@ export function RecentActivity() {
       id: 3,
       user: "Mike Johnson",
       action: "shared an idea",
-      target: "Improving Product Z efficiency",
+      target: "Improving Metalstrip Z efficiency",
       timestamp: "1 day ago",
     },
   ];

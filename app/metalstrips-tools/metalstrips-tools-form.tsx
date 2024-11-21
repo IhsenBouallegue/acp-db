@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -11,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-const productSchema = z.object({
+const metalstripschema = z.object({
   width: z.number(),
   thickness: z.number(),
   elongation: z.number(),
@@ -26,7 +24,7 @@ const productSchema = z.object({
   applicationInfo: z.string(),
   designNumber: z.string(),
   manufacturingSite: z.string(),
-  linkedMachines: z.array(z.number()).optional(),
+  linkedTools: z.array(z.number()).optional(),
 });
 
 const machineSchema = z.object({
@@ -39,25 +37,25 @@ const machineSchema = z.object({
   manufacturingSite: z.string(),
 });
 
-type FormSchema = z.infer<typeof productSchema> | z.infer<typeof machineSchema>;
+type FormSchema = z.infer<typeof metalstripschema> | z.infer<typeof machineSchema>;
 
 const machineOptions = machines.map((machine) => ({
   id: machine.id,
-  name: `Machine ${machine.designNumber}`,
+  name: `Tool ${machine.designNumber}`,
   designNumber: machine.designNumber,
 }));
 
-export function MasterDataForm({
+export function MetalstripsToolsForm({
   type,
   onSubmit,
-}: { type: "products" | "machines"; onSubmit: (data: FormSchema) => void }) {
-  const schema = type === "products" ? productSchema : machineSchema;
+}: { type: "metalstrips" | "machines"; onSubmit: (data: FormSchema) => void }) {
+  const schema = type === "metalstrips" ? metalstripschema : machineSchema;
   const form = useForm<FormSchema>({
     resolver: zodResolver(schema),
   });
 
   const fields =
-    type === "products"
+    type === "metalstrips"
       ? [
           { name: "width", label: "Width", type: "number" },
           { name: "thickness", label: "Thickness", type: "number" },
@@ -79,8 +77,8 @@ export function MasterDataForm({
           { name: "notch", label: "Notch", type: "number" },
           { name: "louverWidth", label: "Louver Width", type: "number" },
           { name: "designNumber", label: "Design Number", type: "text" },
-          { name: "machineWidth", label: "Machine Width", type: "number" },
-          { name: "machineSetNumber", label: "Machine Set Number", type: "text" },
+          { name: "machineWidth", label: "Tool Width", type: "number" },
+          { name: "machineSetNumber", label: "Tool Set Number", type: "text" },
           { name: "manufacturingSite", label: "Manufacturing Site", type: "select" },
         ];
 
@@ -123,20 +121,20 @@ export function MasterDataForm({
             />
           ))}
         </div>
-        {type === "products" && (
+        {type === "metalstrips" && (
           <FormField
             control={form.control}
-            name="linkedMachines"
+            name="linkedTools"
             render={() => (
               <FormItem>
                 <div className="mb-4">
-                  <FormLabel className="text-base">Linked Machines</FormLabel>
+                  <FormLabel className="text-base">Linked Tools</FormLabel>
                 </div>
                 {machineOptions.map((machine) => (
                   <FormField
                     key={machine.id}
                     control={form.control}
-                    name="linkedMachines"
+                    name="linkedTools"
                     render={({ field }) => {
                       return (
                         <FormItem key={machine.id} className="flex flex-row items-start space-x-3 space-y-0">

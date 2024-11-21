@@ -1,6 +1,6 @@
 import { IdeaExchangeOverview } from "@/app/(overview)/overview-ideas-exchange";
 import { KnowledgeBaseOverview } from "@/app/(overview)/overview-knowledge-base";
-import { MasterDataOverview } from "@/app/(overview)/overview-master";
+import { MetalstripsToolsOverview } from "@/app/(overview)/overview-metalstrips-tools";
 import { QuickActions } from "@/app/(overview)/overview-quick-actions";
 import { RecentActivity } from "@/app/(overview)/overview-recent-activity";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,7 +21,7 @@ export default function Page() {
         <TabsContent value="overview" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Suspense fallback={<Card className="h-[125px] animate-pulse" />}>
-              <MasterDataOverview />
+              <MetalstripsToolsOverview />
             </Suspense>
             <Suspense fallback={<Card className="h-[125px] animate-pulse" />}>
               <KnowledgeBaseOverview />

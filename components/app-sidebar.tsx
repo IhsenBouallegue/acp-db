@@ -20,16 +20,16 @@ import {
   Clock,
   Database,
   Factory,
+  FileSpreadsheet,
   FileText,
   Home,
   LifeBuoy,
   Lightbulb,
+  MessageSquare,
   Pin,
   Send,
   Settings2,
   Users,
-  FileSpreadsheet,
-  MessageSquare,
   Wrench,
 } from "lucide-react";
 import Link from "next/link";
@@ -137,7 +137,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <Link href="#">
+              <Link href="/">
                 <Logo />
               </Link>
             </SidebarMenuButton>

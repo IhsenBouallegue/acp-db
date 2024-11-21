@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { categoryConfigs, defaultIcon } from "@/config/search-config";
-import { machines, products } from "@/data/master-data";
+import { machines, metalstrips } from "@/data/master-data";
 import { useSearch } from "@/hooks/useSearch";
 import { useSocialStore } from "@/store/social-store";
 import { useUserStore } from "@/store/user-store";
@@ -25,17 +25,17 @@ export default function GlobalSearch() {
         category: "users" as const,
       })),
 
-      // Products from master data
-      ...products.map((product) => ({
+      // Metalstrips from master data
+      ...metalstrips.map((product) => ({
         id: product.id.toString(),
-        name: `Product ${product.designNumber}`,
-        category: "products" as const,
+        name: `Metalstrip ${product.designNumber}`,
+        category: "metalstrips" as const,
       })),
 
-      // Machines from master data
+      // Tools from master data
       ...machines.map((machine) => ({
         id: machine.id.toString(),
-        name: `Machine ${machine.designNumber}`,
+        name: `Tool ${machine.designNumber}`,
         category: "machines" as const,
       })),
 
@@ -79,7 +79,7 @@ export default function GlobalSearch() {
         <DialogTitle hidden>Search ACP DB</DialogTitle>
         <Command shouldFilter={false}>
           <CommandInput
-            placeholder="Search or use @users, @products, @machines, @posts..."
+            placeholder="Search or use @users, @metalstrips, @machines, @posts..."
             value={query}
             onValueChange={setQuery}
           />

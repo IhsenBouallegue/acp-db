@@ -1,7 +1,7 @@
 export type SearchCategory =
   | "all"
   | "users"
-  | "products"
+  | "metalstrips"
   | "machines"
   | "posts"
   | "knowledge-base"

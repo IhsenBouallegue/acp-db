@@ -1,4 +1,4 @@
-import { MetalstripsToolsTabs } from "@/components/metalstrips-tools/metalstrips-tools-tabs";
+import { MetalstripsToolsTabs } from "@/app/metalstrips-tools/metalstrips-tools-tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageContainer } from "@/components/ui/page-container";
 import { PageHeading } from "@/components/ui/page-heading";
@@ -39,4 +39,4 @@ export default function MetalstripsToolsPage() {
       <MetalstripsToolsTabs />
     </PageContainer>
   );
-} 
+}

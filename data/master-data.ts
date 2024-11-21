@@ -1,10 +1,10 @@
-import type { Product } from "@/types/master.types";
+import type { Metalstrip } from "@/types/master.types";
 
-import type { Machine } from "@/types/master.types";
+import type { Tool } from "@/types/master.types";
 
 export const manufacturingSites = ["Brazil", "Canada", "China", "France", "Germany", "Mexico", "USA"];
 
-export const products: Product[] = [
+export const metalstrips: Metalstrip[] = [
   {
     id: 1,
     width: "10",
@@ -41,7 +41,7 @@ export const products: Product[] = [
   },
 ];
 
-export const machines: Machine[] = [
+export const machines: Tool[] = [
   {
     id: 1,
     web: "5",
@@ -65,7 +65,7 @@ export const machines: Machine[] = [
 ];
 
 export const masterDataStats = {
-  products: {
+  metalstrips: {
     total: 1925,
     growth: 20.1,
   },
@@ -84,11 +84,11 @@ export const masterDataStats = {
 };
 
 export const distributionByCountry = [
-  { country: "USA", products: 400, machines: 275 },
-  { country: "Germany", products: 300, machines: 200 },
-  { country: "China", products: 200, machines: 187 },
-  { country: "Brazil", products: 278, machines: 173 },
-  { country: "France", products: 189, machines: 120 },
+  { country: "USA", metalstrips: 400, machines: 275 },
+  { country: "Germany", metalstrips: 300, machines: 200 },
+  { country: "China", metalstrips: 200, machines: 187 },
+  { country: "Brazil", metalstrips: 278, machines: 173 },
+  { country: "France", metalstrips: 189, machines: 120 },
 ];
 
 export const productTypeDistribution = [
