@@ -2,6 +2,7 @@ import { MetalstripsToolsTabs } from "@/app/metalstrips-tools/metalstrips-tools-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageContainer } from "@/components/ui/page-container";
 import { PageHeading } from "@/components/ui/page-heading";
+import { PageSubheading } from "@/components/ui/page-subheading";
 import { Cog, Package } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -12,9 +13,10 @@ export const metadata: Metadata = {
 export default function MetalstripsToolsPage() {
   return (
     <PageContainer>
-      <PageHeading>Metalstrips and Tools Management</PageHeading>
+      <PageHeading>Metalstrips and Tools</PageHeading>
+      <PageSubheading>Calculate and manage your metalstrips and tools</PageSubheading>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="grid gap-4 md:grid-cols-2 mb-4 sm:mb-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Metalstrips</CardTitle>

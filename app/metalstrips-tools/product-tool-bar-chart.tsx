@@ -36,14 +36,8 @@ export function MetalstripToolBarChart() {
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
-        <ChartContainer config={chartConfig} className="min-h-[300px]">
-          <BarChart
-            data={chartData}
-            layout="vertical"
-            margin={{
-              left: 80,
-            }}
-          >
+        <ChartContainer config={chartConfig} className="min-h-[300px] max-w-full">
+          <BarChart data={chartData} layout="vertical">
             <YAxis dataKey="country" type="category" tickLine={false} tickMargin={10} axisLine={false} />
             <XAxis type="number" hide />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />

@@ -20,7 +20,7 @@ export function PostCard({ post }: PostCardProps) {
   };
 
   return (
-    <Card className="p-0 md:p-4 rounded-sm">
+    <Card className="p-2 md:p-4 rounded-sm border-0 shadow-none md:border md:shadow-sm border-b-2">
       <CardHeader className="flex flex-row items-center gap-4">
         <Avatar>
           <AvatarImage src={post.author.avatar} alt={post.author.name} />
@@ -39,7 +39,7 @@ export function PostCard({ post }: PostCardProps) {
         </div>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="px-0 md:px-6">
         <p className="mt-2">{post.content}</p>
 
         {post.attachments && post.attachments.length > 0 && (

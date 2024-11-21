@@ -72,12 +72,12 @@ export default function UserList() {
     return <span className="text-sm text-gray-500">Never active</span>;
   };
   return (
-    <Card>
-      <CardHeader>
+    <Card className="border-0 shadow-none md:border md:shadow-sm">
+      <CardHeader className="px-0 md:px-6">
         <CardTitle>User List</CardTitle>
         <CardDescription>A comprehensive list of all users in your organization.</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-0 md:px-6">
         <div className="rounded-md border">
           <Table>
             <TableHeader>
@@ -168,10 +168,10 @@ export default function UserList() {
           </Table>
         </div>
         <div className="flex items-center justify-end space-x-2 py-4">
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" disabled>
             Previous
           </Button>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" disabled>
             Next
           </Button>
         </div>

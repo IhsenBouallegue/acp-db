@@ -30,15 +30,15 @@ export function InviteUser() {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>User Management</CardTitle>
-        <CardDescription>Manage your organization's users, invite new members, and control access.</CardDescription>
+    <Card className="border-0 shadow-none md:border md:shadow-sm">
+      <CardHeader className="px-0 md:px-6">
+        <CardTitle>Invite Team Members</CardTitle>
+        <CardDescription>Add new members to your organization by sending email invitations.</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-0 md:px-6">
         <p className="mb-4">
-          This dashboard allows you to oversee all user accounts within your organization. You can invite new users,
-          edit existing user information, and manage user roles and statuses.
+          Invite new team members to join your organization. They will receive an email with instructions to set up
+          their account and select their role-specific permissions.
         </p>
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogTrigger asChild>

@@ -2,6 +2,7 @@
 
 import { PageContainer } from "@/components/ui/page-container";
 import { PageHeading } from "@/components/ui/page-heading";
+import { PageSubheading } from "@/components/ui/page-subheading";
 import { useSocialStore } from "@/store/social-store";
 import { useState } from "react";
 import { CreatePost } from "./create-post";
@@ -25,7 +26,8 @@ export default function SocialMediaTimeline() {
 
   return (
     <PageContainer>
-      <PageHeading className="text-center">Idea Exchange Platform</PageHeading>
+      <PageHeading className="text-center">Idea Exchange</PageHeading>
+      <PageSubheading>Share and discuss ideas with your team members</PageSubheading>
       <div className="w-full flex justify-center">
         <div className="flex pt-6 flex-col gap-6 max-w-3xl w-full">
           <SearchAndFilter

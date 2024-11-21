@@ -4,8 +4,12 @@ import { MetalstripTypePieChart } from "@/app/metalstrips-tools/product-type-pie
 export function OverviewTab() {
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      <MetalstripToolBarChart />
-      <MetalstripTypePieChart />
+      <div className="w-full overflow-x-auto">
+        <MetalstripToolBarChart />
+      </div>
+      <div className="w-full overflow-x-auto">
+        <MetalstripTypePieChart />
+      </div>
     </div>
   );
 }

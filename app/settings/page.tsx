@@ -3,6 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { PageHeading } from "@/components/ui/page-heading";
+import { PageSubheading } from "@/components/ui/page-subheading";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useSettingsStore } from "@/store/settings-store";
@@ -47,7 +49,9 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container">
+      <PageHeading>Settings</PageHeading>
+      <PageSubheading>Manage your account preferences and application settings</PageSubheading>
       <Card>
         <CardHeader>
           <CardTitle>ACP DB Settings</CardTitle>

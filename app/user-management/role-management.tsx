@@ -91,14 +91,14 @@ export function RoleManagement() {
   };
 
   return (
-    <Card>
-      <CardHeader>
+    <Card className="border-0 shadow-none md:border md:shadow-sm">
+      <CardHeader className="px-0 md:px-6">
         <CardTitle>Role Management</CardTitle>
         <CardDescription>
           Manage access levels and permissions for different roles in your organization.
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-0 md:px-6">
         <div className="mb-4">
           <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
             <DialogTrigger asChild>
@@ -193,10 +193,10 @@ export function RoleManagement() {
           </Table>
         </div>
         <div className="flex items-center justify-end space-x-2 py-4">
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" disabled>
             Previous
           </Button>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" disabled>
             Next
           </Button>
         </div>
